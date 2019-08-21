@@ -6,4 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/textFieldBoxes"
+        style="@style/EditTextBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_double"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="@dimen/margin_double"
+        app:labelText="@string/login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:primaryColor="@color/colorAccent"
+        app:secondaryColor="@color/colorDisabled">
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText style="@style/ExtendedEditText" />
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/textFieldBoxes2"
+        style="@style/EditTextBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_double"
+        app:labelText="@string/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldBoxes"
+        app:primaryColor="@color/colorAccent"
+        app:secondaryColor="@color/colorDisabled">
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText style="@style/ExtendedEditText" />
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
