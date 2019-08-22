@@ -1,20 +1,29 @@
 package com.kovrizhkin.memesstore.view
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
 import com.kovrizhkin.memesstore.R
+import com.kovrizhkin.memesstore.databinding.ActivityLoginBinding
 import kotlinx.android.synthetic.main.activity_login.*
+import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+
 
 class LoginActivity : AppCompatActivity() {
 
-    private var passwordIsVisible = false
+    lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding.passwordIsVisible = false
+        binding.isLoading = false
+
 
         loginButton.setOnClickListener { onButtonClick() }
 
@@ -22,39 +31,42 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startButtonLoading() {
-        loginButton.isEnabled = false
-        loginButton.setTextColor(resources.getColor(R.color.colorTransparent))
-        progressBarLogin.visibility = View.VISIBLE
+        binding.isLoading = true
+        //binding.notifyPropertyChanged(BR.isLoading)
     }
 
     private fun stopButtonLoading() {
-        progressBarLogin.visibility = View.GONE
-        loginButton.setTextColor(resources.getColor(R.color.colorTextButton))
-        loginButton.isEnabled = true
-
+        binding.isLoading = false
+        //binding.notifyPropertyChanged(BR.isLoading)
     }
 
     private fun toggleVisiblePassword() {
-
-    }
-
-    fun showPassword() {
-
-    }
-
-    fun hidePassword() {
-
+        binding.passwordIsVisible = !binding.passwordIsVisible!!
     }
 
     private fun onButtonClick() {
+        toggleVisiblePassword()
         startButtonLoading()
         Handler().postDelayed({
             stopButtonLoading()
-        }, 3000)
+        }, 4400)
+
+    }
+
+
+    fun setImageViewResource(imageView: ImageView, resource: Int) {
+        imageView.setImageResource(resource)
     }
 
     private fun validateFields() {
 
+    }
+
+    companion object {
+        @BindingAdapter("app:app:endIcon")
+        fun loadIcon(box: TextFieldBoxes, resources: Int) {
+            box.setEndIcon(resources)
+        }
     }
 }
 
