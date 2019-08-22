@@ -26,4 +26,18 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="FilledButton">
+        <item name="android:paddingStart">@dimen/padding_double</item>
+        <item name="android:paddingEnd">@dimen/padding_double</item>
+        <item name="android:background">@drawable/filled_button_background</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorTextButton</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+
+    <style name="TransparentLabel">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
 </resources>
