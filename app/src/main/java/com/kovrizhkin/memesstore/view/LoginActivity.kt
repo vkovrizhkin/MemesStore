@@ -1,17 +1,24 @@
 package com.kovrizhkin.memesstore.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import com.kovrizhkin.memesstore.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
+    private var passwordIsVisible = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        startButtonLoading()
+
+        loginButton.setOnClickListener { onButtonClick() }
+
+
     }
 
     private fun startButtonLoading() {
@@ -26,4 +33,28 @@ class LoginActivity : AppCompatActivity() {
         loginButton.isEnabled = true
 
     }
+
+    private fun toggleVisiblePassword() {
+
+    }
+
+    fun showPassword() {
+
+    }
+
+    fun hidePassword() {
+
+    }
+
+    private fun onButtonClick() {
+        startButtonLoading()
+        Handler().postDelayed({
+            stopButtonLoading()
+        }, 3000)
+    }
+
+    private fun validateFields() {
+
+    }
 }
+
