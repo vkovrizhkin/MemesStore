@@ -1,5 +1,6 @@
 package com.kovrizhkin.memesstore.view
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.widget.ImageView
@@ -36,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun startButtonLoading() {
         binding.isLoading = true
+
         //binding.notifyPropertyChanged(BR.isLoading)
     }
 

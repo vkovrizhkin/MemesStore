@@ -20,6 +20,6 @@ class ApiManager {
     }
 
     companion object {
-        const val BASE_URL = "http://////"
+        const val BASE_URL = " http://demo3161256.mockable.io/"
     }
 }
