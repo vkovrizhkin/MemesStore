@@ -24,6 +24,10 @@ class LoginActivity : AppCompatActivity() {
         binding.passwordIsVisible = false
         binding.isLoading = false
 
+        textFieldBoxes2.endIconImageButton.setOnClickListener {
+            toggleVisiblePassword()
+        }
+
 
         loginButton.setOnClickListener { onButtonClick() }
 
@@ -45,11 +49,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onButtonClick() {
-        toggleVisiblePassword()
         startButtonLoading()
         Handler().postDelayed({
             stopButtonLoading()
-        }, 4400)
+        }, 3400)
 
     }
 
@@ -64,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         @BindingAdapter("app:app:endIcon")
-        fun loadIcon(box: TextFieldBoxes, resources: Int) {
+        fun setEndIcon(box: TextFieldBoxes, resources: Int) {
             box.setEndIcon(resources)
         }
     }
