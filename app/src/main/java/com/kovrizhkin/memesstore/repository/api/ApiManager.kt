@@ -3,9 +3,9 @@ package com.kovrizhkin.memesstore.repository.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiManager {
+object ApiManager {
 
-    var apiService: ApiService? = null
+    private var apiService: ApiService? = null
 
     fun getService(): ApiService {
 
@@ -19,7 +19,5 @@ class ApiManager {
         return apiService!!
     }
 
-    companion object {
-        const val BASE_URL = " http://demo3161256.mockable.io/"
-    }
+    private const val BASE_URL = " http://demo3161256.mockable.io/"
 }

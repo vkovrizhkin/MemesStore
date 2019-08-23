@@ -10,7 +10,7 @@ object Api {
 
     fun signUp(body: AuthRequest) {
 
-        val call = ApiManager().getService().signUp(body)
+        val call = ApiManager.getService().signUp(body)
 
         call.enqueue(object : Callback<AuthResponse> {
             override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
@@ -18,7 +18,7 @@ object Api {
             }
 
             override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-               //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
         })
