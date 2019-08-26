@@ -3,19 +3,12 @@ package com.kovrizhkin.memesstore.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageButton
-import androidx.core.view.children
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.ViewModelStore
 import com.kovrizhkin.memesstore.R
 import com.kovrizhkin.memesstore.databinding.ActivityLoginBinding
 import com.kovrizhkin.memesstore.presenters.LoginPresenter
 import com.kovrizhkin.memesstore.presenters.PresenterContract
-import com.kovrizhkin.memesstore.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -28,16 +21,11 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
     private lateinit var presenter: PresenterContract.ILoginPresenter
 
-    private lateinit var viewModel: LoginViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         presenter = LoginPresenter(this)
-
-
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding.passwordIsVisible = false
@@ -51,6 +39,7 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
     }
 
     override fun onSuccessLogin() {
+
         stopButtonLoading()
 
         val intent = Intent(this, MemeListActivity::class.java)
@@ -79,7 +68,7 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
             )
         ) {
             startButtonLoading()
-            presenter.onLogin("aaa", "aaa")
+            presenter.onLogin(loginEditText.text.toString(), passwordEditText.text.toString())
         }
 
     }
