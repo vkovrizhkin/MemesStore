@@ -36,10 +36,14 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
         setContentView(R.layout.activity_login)
         presenter = LoginPresenter(this)
 
-
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-
+        // init binding
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        //init view-model for binding
+        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        viewModel.context = this
+        binding.viewModel = viewModel
+
         binding.passwordIsVisible = false
         binding.isLoading = false
 
@@ -51,15 +55,17 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
     }
 
     override fun onSuccessLogin() {
-        stopButtonLoading()
+        //stopButtonLoading()
 
         val intent = Intent(this, MemeListActivity::class.java)
         startActivity(intent)
     }
 
     private fun startButtonLoading() {
-        binding.isLoading = true
+        // binding.isLoading = true
 
+        viewModel.isLoading.set(true)
+        // binding.viewModel = viewModel
     }
 
     private fun stopButtonLoading() {
@@ -79,7 +85,8 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
             )
         ) {
             startButtonLoading()
-            presenter.onLogin("aaa", "aaa")
+            viewModel.onLogin("aaa", "aaa")
+            //presenter.onLogin("aaa", "aaa")
         }
 
     }

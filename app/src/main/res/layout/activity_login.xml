@@ -17,6 +17,10 @@
         <variable
             name="isLoading"
             type="java.lang.Boolean" />
+
+        <variable
+            name="viewModel"
+            type="com.kovrizhkin.memesstore.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -86,7 +90,7 @@
             android:indeterminateTint="@color/colorBlack"
             android:indeterminateTintMode="src_in"
             android:translationZ="20dp"
-            android:visibility="@{isLoading ? View.VISIBLE : View.GONE }"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE }"
             app:backgroundTint="@color/colorBlack"
             app:layout_constraintBottom_toBottomOf="@+id/loginButton"
             app:layout_constraintEnd_toEndOf="@+id/loginButton"
