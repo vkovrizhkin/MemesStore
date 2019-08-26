@@ -3,6 +3,7 @@ package com.kovrizhkin.memesstore.presenters
 import com.kovrizhkin.memesstore.model.auth.AuthRequest
 import com.kovrizhkin.memesstore.model.auth.AuthResponse
 import com.kovrizhkin.memesstore.repository.api.Api
+import com.kovrizhkin.memesstore.repository.sharedpref.SharedPrefManager
 import com.kovrizhkin.memesstore.view.ViewContract
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,8 +25,9 @@ class LoginPresenter(private val view: ViewContract.ILoginView) :
                 // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
-            override fun onNext(t: AuthResponse) {
+            override fun onNext(result: AuthResponse) {
                 view.onSuccessLogin()
+                SharedPrefManager.saveSession(result)
             }
 
             override fun onError(e: Throwable) {
