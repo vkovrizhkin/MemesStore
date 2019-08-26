@@ -11,6 +11,7 @@ import com.kovrizhkin.memesstore.databinding.ActivityLoginBinding
 import com.kovrizhkin.memesstore.presenters.LoginPresenter
 import com.kovrizhkin.memesstore.presenters.PresenterContract
 import kotlinx.android.synthetic.main.activity_login.*
+import studio.carbonylgroup.textfieldboxes.ExtendedEditText
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 
 
@@ -19,7 +20,7 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    lateinit var binding: ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
 
     private lateinit var presenter: PresenterContract.ILoginPresenter
 
@@ -78,9 +79,11 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
     }
 
     companion object {
-        @BindingAdapter("app:app:endIcon")
-        fun setEndIcon(box: TextFieldBoxes, resources: Int) {
-            box.setEndIcon(resources)
+
+        @JvmStatic
+        @BindingAdapter("endIcon")
+        fun TextFieldBoxes.bindEndIcon(resources: Int) {
+            setEndIcon(resources)
         }
     }
 }
