@@ -1,9 +1,8 @@
 package com.kovrizhkin.memesstore.view
 
 import android.os.Bundle
-import android.os.Handler
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import com.kovrizhkin.memesstore.R
@@ -16,8 +15,9 @@ import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 
 
 class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
+
     override fun onSuccessLogin() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        stopButtonLoading()
     }
 
     private lateinit var binding: ActivityLoginBinding
@@ -34,21 +34,16 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
         binding.passwordIsVisible = false
         binding.isLoading = false
 
-        textFieldBoxes2.endIconImageButton.setOnClickListener {
+        passwordTextField.endIconImageButton.setOnClickListener {
             toggleVisiblePassword()
         }
 
-
-
         loginButton.setOnClickListener { onButtonClick() }
-
-
     }
 
     private fun startButtonLoading() {
         binding.isLoading = true
 
-        //binding.notifyPropertyChanged(BR.isLoading)
     }
 
     private fun stopButtonLoading() {
@@ -62,20 +57,24 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
     private fun onButtonClick() {
         startButtonLoading()
+
         presenter.onLogin("aaa", "aaa")
-        Handler().postDelayed({
-            stopButtonLoading()
-        }, 3400)
+        /*if (fieldIsValid(passwordTextField) and fieldIsValid(loginTextField)) {
+
+        }*/
 
     }
 
+    private fun fieldIsValid(textField: TextFieldBoxes): Boolean {
+        val result = (textField.children.first() as ExtendedEditText).text.isNotBlank()
 
-    fun setImageViewResource(imageView: ImageView, resource: Int) {
-        imageView.setImageResource(resource)
-    }
-
-    private fun validateFields() {
-
+        if (result) {
+            textField.removeError()
+        } else {
+            textField.setError(getString(R.string.field_is_required), false)
+            return false
+        }
+        return result
     }
 
     companion object {

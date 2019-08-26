@@ -6,5 +6,7 @@
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
 
+    <string name="field_is_required">Поле обязательно к заполнению</string>
+
 
 </resources>
