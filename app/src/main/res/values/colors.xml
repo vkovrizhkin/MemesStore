@@ -10,6 +10,7 @@
 
 
     <color name="colorCanvas">#312F51</color>
+    <color name="colorInputBackground">#2e2c49</color>
     <color name="colorSemiTransparent">#0DFFFFFF</color>
 
     <color name="colorTextMain">#FFFFFF</color>

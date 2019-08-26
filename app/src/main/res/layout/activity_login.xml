@@ -57,15 +57,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginTextField"
-            app:primaryColor="@color/colorAccent"
             app:passwordToggleEnabled="true"
+            app:primaryColor="@color/colorAccent"
             app:secondaryColor="@color/colorDisabled">
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/passwordEditText"
                 style="@style/ExtendedEditText"
-                android:inputType="@{passwordIsVisible ? (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED) : (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD)}"
-                />
+                android:inputType="@{passwordIsVisible ? (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED) : (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD)}" />
 
         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
