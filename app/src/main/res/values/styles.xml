@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorLightBackground</item>
+        <item name="colorPrimaryDark">@color/colorCanvas</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/colorCanvas</item>
         <item name="android:statusBarColor">@color/colorCanvas</item>
@@ -14,6 +14,10 @@
     <style name="SplashScreenTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:statusBarColor">@color/colorCanvas</item>
         <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+    <style name="MainActivityTheme" parent="AppTheme">
+        <item name="android:statusBarColor">@color/colorLightBackground</item>
     </style>
 
 

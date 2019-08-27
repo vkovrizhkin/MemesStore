@@ -28,5 +28,5 @@ object ApiManager {
         return apiService!!
     }
 
-    private const val BASE_URL = " http://demo3161256.mockable.io/"
+    private const val BASE_URL = " https://demo3161256.mockable.io/"
 }

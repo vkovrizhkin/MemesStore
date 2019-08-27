@@ -1,5 +1,6 @@
 package com.kovrizhkin.memesstore.view
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
@@ -31,26 +32,33 @@ class MainScreenActivity : AppCompatActivity() {
         }
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-                // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+            override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    MEMES_LIST_FRAGMENT_INDEX -> bottomBar.menu.getItem(MEMES_LIST_FRAGMENT_INDEX)
-                        .isChecked = true
-                    ADD_MEM_FRAGMENT_INDEX -> bottomBar.menu.getItem(ADD_MEM_FRAGMENT_INDEX)
-                        .isChecked = true
-                    PROFILE_FRAGMENT_INDEX -> bottomBar.menu.getItem(PROFILE_FRAGMENT_INDEX)
-                        .isChecked = true
+                    MEMES_LIST_FRAGMENT_INDEX -> {
+                        bottomBar.menu.getItem(MEMES_LIST_FRAGMENT_INDEX)
+                            .isChecked = true
+                        window.statusBarColor = resources.getColor(R.color.colorLightBackground)
+                    }
+
+                    ADD_MEM_FRAGMENT_INDEX -> {
+                        bottomBar.menu.getItem(ADD_MEM_FRAGMENT_INDEX)
+                            .isChecked = true
+                        window.statusBarColor = resources.getColor(R.color.colorLightBackground)
+                    }
+                    PROFILE_FRAGMENT_INDEX -> {
+                        bottomBar.menu.getItem(PROFILE_FRAGMENT_INDEX)
+                            .isChecked = true
+                        window.statusBarColor = resources.getColor(R.color.colorCanvas)
+                    }
                 }
             }
 
