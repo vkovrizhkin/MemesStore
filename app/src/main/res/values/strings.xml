@@ -8,5 +8,15 @@
 
     <string name="field_is_required">Поле обязательно к заполнению</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="add_mem">Добавить мем</string>
+    <string name="mem_list">Свежие мемасы</string>
+    <string name="profile">Профиль</string>
+    <string name="memes">Memes</string>
+    <string name="add_mem_title">Add Mem</string>
+    <string name="profile_title">Profile</string>
+
 
 </resources>

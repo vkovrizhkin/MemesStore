@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mem_list_tab"
+        android:icon="@drawable/ic_dashboard_white_36dp"
+        android:title="@string/memes" />
+    <item
+        android:id="@+id/add_mem_tab"
+        android:icon="@drawable/ic_add_circle_white_36dp"
+        android:title="@string/add_mem_title"/>
+    <item
+        android:id="@+id/profile_tab"
+        android:icon="@drawable/ic_person_white_36dp"
+        android:title="@string/profile_title" />
+</menu>

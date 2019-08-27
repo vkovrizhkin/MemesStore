@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
         stopButtonLoading()
 
-        val intent = Intent(this, MemeListActivity::class.java)
+        val intent = Intent(this, MainScreenActivity::class.java)
         startActivity(intent)
     }
 
