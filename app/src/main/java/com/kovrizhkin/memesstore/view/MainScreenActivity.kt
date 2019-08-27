@@ -13,5 +13,6 @@ class MainScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main_screen)
 
         viewPager.adapter = MainViewPagerFragmentAdapter(supportFragmentManager)
+
     }
 }
