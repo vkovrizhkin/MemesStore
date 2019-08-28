@@ -7,7 +7,7 @@ import java.io.Serializable
 
 data class MemInfo(
     @SerializedName("createdDate")
-    val createdDate: Int,
+    val createdDate: Long,
 
     @SerializedName("description")
     val description: String,
