@@ -8,6 +8,7 @@
     <dimen name="margin_default">8dp</dimen>
     <dimen name="margin_double">16dp</dimen>
     <dimen name="margin_semi">4dp</dimen>
+    <dimen name="margin_mem_content">10dp</dimen>
 
     <dimen name="radius_default">4dp</dimen>
 
@@ -15,6 +16,8 @@
     <dimen name="button_progress_size">32dp</dimen>
 
     <dimen name="bottom_bar_height">56dp</dimen>
+
+    <dimen name="icon_button_size">24sp</dimen>
 
 
     <dimen name="button_text_size">14sp</dimen>

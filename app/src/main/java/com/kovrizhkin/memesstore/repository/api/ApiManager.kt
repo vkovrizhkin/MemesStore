@@ -11,7 +11,6 @@ object ApiManager {
 
     fun getService(): ApiService {
 
-
         if (apiService == null) {
 
             val okHttpClient = OkHttpClient.Builder().build()

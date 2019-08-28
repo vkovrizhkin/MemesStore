@@ -8,7 +8,7 @@ interface PresenterContract {
         fun onLogin(login: String, password: String)
     }
 
-    interface IMemeListPresenter {
+    interface IMemListPresenter {
         fun updateMemesList()
         fun addToFavorites(mem: MemInfo)
         fun getFavoriteIds(): List<Int>
