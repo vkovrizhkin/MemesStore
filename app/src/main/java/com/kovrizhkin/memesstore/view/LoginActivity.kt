@@ -3,7 +3,7 @@ package com.kovrizhkin.memesstore.view
 import android.content.Intent
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
-import android.widget.EditText
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.kovrizhkin.memesstore.R
 import com.kovrizhkin.memesstore.presenters.LoginPresenter
@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
     private lateinit var presenter: PresenterContract.ILoginPresenter
 
-    private var isLoading = false
 
     private var passwordIsVisible = false
 
@@ -44,11 +43,23 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
     }
 
     private fun startButtonLoading() {
+        loginButton.apply {
+            isEnabled = false
+            text = ""
+        }
+
+        progressBarLogin.visibility = View.VISIBLE
+
 
     }
 
     private fun stopButtonLoading() {
 
+        progressBarLogin.visibility = View.GONE
+        loginButton.apply {
+            isEnabled = true
+            text = getString(R.string.sign_in)
+        }
     }
 
     private fun toggleVisiblePassword() {
