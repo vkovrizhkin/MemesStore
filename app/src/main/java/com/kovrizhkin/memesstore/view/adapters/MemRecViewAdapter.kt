@@ -11,7 +11,7 @@ import com.kovrizhkin.memesstore.model.memes.MemInfo
 import kotlinx.android.synthetic.main.mem_item_layout.view.*
 import java.util.zip.Inflater
 
-class MemRecViewAdapter(private val memesList: List<MemInfo>) :
+class MemRecViewAdapter(var memesList: List<MemInfo>) :
     RecyclerView.Adapter<MemRecViewAdapter.ViewHolder>() {
 
 
