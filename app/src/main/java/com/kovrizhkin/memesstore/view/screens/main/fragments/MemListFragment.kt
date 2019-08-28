@@ -24,13 +24,11 @@ import kotlinx.android.synthetic.main.fragment_mem_list.view.*
 
 class MemListFragment : Fragment(), ViewContract.IMemListView {
 
-    lateinit var presenter: PresenterContract.IMemListPresenter
+    private lateinit var presenter: PresenterContract.IMemListPresenter
 
     private lateinit var mAdapter: MemRecViewAdapter
 
-    var memesList = mutableListOf<MemInfo>()
-
-    private val mLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+    private var memesList = mutableListOf<MemInfo>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +55,7 @@ class MemListFragment : Fragment(), ViewContract.IMemListView {
 
     private fun initRecView(recView: RecyclerView) {
 
-        mAdapter = MemRecViewAdapter(memesList)
+        mAdapter = MemRecViewAdapter(memesList, onClickItemCallback)
 
         recView.apply {
             adapter = mAdapter

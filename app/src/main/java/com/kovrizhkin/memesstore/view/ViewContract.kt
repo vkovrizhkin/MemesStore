@@ -12,4 +12,9 @@ interface ViewContract {
         fun showMemes(memes: List<MemInfo>)
         fun showError(t: Throwable)
     }
+
+    interface ISplashView {
+        fun showLoginScreen()
+        fun showMainScreen()
+    }
 }

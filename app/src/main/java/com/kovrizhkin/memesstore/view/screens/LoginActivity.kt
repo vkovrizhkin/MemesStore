@@ -46,6 +46,7 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
         val intent = Intent(this, MainScreenActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun startButtonLoading() {

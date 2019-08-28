@@ -22,4 +22,8 @@ interface PresenterContract {
         fun saveMem(mem: MemInfo)
     }
 
+    interface ISplashPresenter {
+        fun checkLogin()
+    }
+
 }
