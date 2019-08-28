@@ -1,4 +1,4 @@
-package com.kovrizhkin.memesstore.view
+package com.kovrizhkin.memesstore.view.screens
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.kovrizhkin.memesstore.R
 import com.kovrizhkin.memesstore.presenters.LoginPresenter
 import com.kovrizhkin.memesstore.presenters.PresenterContract
+import com.kovrizhkin.memesstore.view.screens.main.MainScreenActivity
+import com.kovrizhkin.memesstore.view.ViewContract
 import kotlinx.android.synthetic.main.activity_login.*
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes

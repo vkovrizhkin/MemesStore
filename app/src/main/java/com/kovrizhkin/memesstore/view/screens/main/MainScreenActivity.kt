@@ -1,6 +1,5 @@
-package com.kovrizhkin.memesstore.view
+package com.kovrizhkin.memesstore.view.screens.main
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager.widget.ViewPager
@@ -24,9 +23,12 @@ class MainScreenActivity : AppCompatActivity() {
 
         bottomBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.mem_list_tab -> viewPager.currentItem = MEMES_LIST_FRAGMENT_INDEX
-                R.id.add_mem_tab -> viewPager.currentItem = ADD_MEM_FRAGMENT_INDEX
-                R.id.profile_tab -> viewPager.currentItem = PROFILE_FRAGMENT_INDEX
+                R.id.mem_list_tab -> viewPager.currentItem =
+                    MEMES_LIST_FRAGMENT_INDEX
+                R.id.add_mem_tab -> viewPager.currentItem =
+                    ADD_MEM_FRAGMENT_INDEX
+                R.id.profile_tab -> viewPager.currentItem =
+                    PROFILE_FRAGMENT_INDEX
             }
             return@setOnNavigationItemSelectedListener true
         }

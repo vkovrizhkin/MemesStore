@@ -3,9 +3,9 @@ package com.kovrizhkin.memesstore.view.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.kovrizhkin.memesstore.view.mainscreenfragments.AddMemFragment
-import com.kovrizhkin.memesstore.view.mainscreenfragments.MemListFragment
-import com.kovrizhkin.memesstore.view.mainscreenfragments.ProfileFragment
+import com.kovrizhkin.memesstore.view.screens.main.fragments.AddMemFragment
+import com.kovrizhkin.memesstore.view.screens.main.fragments.MemListFragment
+import com.kovrizhkin.memesstore.view.screens.main.fragments.ProfileFragment
 
 class MainViewPagerFragmentAdapter(fragmentManager: FragmentManager) :
     FragmentPagerAdapter(fragmentManager) {

@@ -1,4 +1,4 @@
-package com.kovrizhkin.memesstore.view.mainscreenfragments
+package com.kovrizhkin.memesstore.view.screens.main.fragments
 
 
 import android.os.Bundle
