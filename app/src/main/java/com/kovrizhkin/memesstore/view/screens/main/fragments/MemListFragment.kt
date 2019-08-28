@@ -54,7 +54,8 @@ class MemListFragment : Fragment(), ViewContract.IMemListView {
         recView.apply {
             adapter = mAdapter
 
-            if (layoutManager == null) layoutManager = mLayoutManager
+            if (layoutManager == null) layoutManager =
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
 
             addItemDecoration(object : RecyclerView.ItemDecoration() {
                 override fun getItemOffsets(
