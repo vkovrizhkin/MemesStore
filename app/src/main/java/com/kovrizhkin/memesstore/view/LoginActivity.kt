@@ -15,6 +15,10 @@ import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 
 class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
+    override fun onErrorLogin(t: Throwable) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     private lateinit var presenter: PresenterContract.ILoginPresenter
 
 
