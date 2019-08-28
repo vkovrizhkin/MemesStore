@@ -1,6 +1,7 @@
 package com.kovrizhkin.memesstore.view.screens.main.fragments
 
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.kovrizhkin.memesstore.presenters.PresenterContract
 import com.kovrizhkin.memesstore.utils.MemesDiffUtil
 import com.kovrizhkin.memesstore.view.ViewContract
 import com.kovrizhkin.memesstore.view.adapters.MemRecViewAdapter
+import com.kovrizhkin.memesstore.view.screens.DetailMemActivity
 import kotlinx.android.synthetic.main.fragment_mem_list.view.*
 
 
@@ -46,6 +48,12 @@ class MemListFragment : Fragment(), ViewContract.IMemListView {
         return view
     }
 
+
+    private val onClickItemCallback = { mem: MemInfo ->
+        val intent = Intent(activity, DetailMemActivity::class.java)
+        intent.putExtra(DetailMemActivity.MEM_EXTRA_KEY, mem)
+        activity!!.startActivity(intent)
+    }
 
     private fun initRecView(recView: RecyclerView) {
 

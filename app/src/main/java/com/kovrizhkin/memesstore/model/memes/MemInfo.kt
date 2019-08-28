@@ -2,9 +2,10 @@ package com.kovrizhkin.memesstore.model.memes
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
 
 data class MemInfo(
-
     @SerializedName("createdDate")
     val createdDate: Int,
 
@@ -22,4 +23,4 @@ data class MemInfo(
 
     @SerializedName("title")
     val title: String
-)
+) : Serializable
