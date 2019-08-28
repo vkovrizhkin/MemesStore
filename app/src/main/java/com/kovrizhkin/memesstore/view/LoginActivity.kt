@@ -2,11 +2,10 @@ package com.kovrizhkin.memesstore.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.BindingAdapter
-import androidx.databinding.DataBindingUtil
 import com.kovrizhkin.memesstore.R
-import com.kovrizhkin.memesstore.databinding.ActivityLoginBinding
 import com.kovrizhkin.memesstore.presenters.LoginPresenter
 import com.kovrizhkin.memesstore.presenters.PresenterContract
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,10 +15,11 @@ import studio.carbonylgroup.textfieldboxes.TextFieldBoxes
 
 class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
-
-    private lateinit var binding: ActivityLoginBinding
-
     private lateinit var presenter: PresenterContract.ILoginPresenter
+
+    private var isLoading = false
+
+    private var passwordIsVisible = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +27,6 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
         setContentView(R.layout.activity_login)
         presenter = LoginPresenter(this)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        binding.passwordIsVisible = false
-        binding.isLoading = false
 
         passwordTextField.endIconImageButton.setOnClickListener {
             toggleVisiblePassword()
@@ -47,17 +44,26 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
     }
 
     private fun startButtonLoading() {
-        binding.isLoading = true
 
     }
 
     private fun stopButtonLoading() {
-        binding.isLoading = false
-        //binding.notifyPropertyChanged(BR.isLoading)
+
     }
 
     private fun toggleVisiblePassword() {
-        binding.passwordIsVisible = !binding.passwordIsVisible!!
+        passwordIsVisible = !passwordIsVisible
+
+        val method = if (passwordIsVisible) null else PasswordTransformationMethod()
+        val endIconResource = if (passwordIsVisible) R.drawable.ic_eye_off else R.drawable.ic_eye_on
+
+        passwordTextField.setEndIcon(endIconResource)
+        passwordEditText.apply {
+            transformationMethod = method
+            setSelection(text.length)
+        }
+
+
     }
 
     private fun onButtonClick() {
@@ -83,15 +89,6 @@ class LoginActivity : AppCompatActivity(), ViewContract.ILoginView {
 
         return result
 
-    }
-
-    companion object {
-
-        @JvmStatic
-        @BindingAdapter("endIcon")
-        fun TextFieldBoxes.bindEndIcon(resources: Int) {
-            setEndIcon(resources)
-        }
     }
 }
 

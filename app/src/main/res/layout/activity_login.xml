@@ -2,23 +2,6 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
-
-        <import type="android.text.InputType" />
-
-        <import type="android.view.View" />
-
-        <import type="com.kovrizhkin.memesstore.R" />
-
-        <variable
-            name="passwordIsVisible"
-            type="java.lang.Boolean" />
-
-        <variable
-            name="isLoading"
-            type="java.lang.Boolean" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -52,19 +35,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_double"
-            app:endIcon='@{passwordIsVisible ? R.drawable.ic_eye_on : R.drawable.ic_eye_off }'
+            app:endIcon="@drawable/ic_eye_off"
             app:labelText="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginTextField"
-            app:passwordToggleEnabled="true"
             app:primaryColor="@color/colorAccent"
             app:secondaryColor="@color/colorDisabled">
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/passwordEditText"
                 style="@style/ExtendedEditText"
-                android:inputType="@{passwordIsVisible ? (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_SIGNED) : (InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD)}" />
+                android:inputType="numberPassword" />
 
         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -74,7 +56,7 @@
             style="@style/FilledButton"
             android:layout_width="match_parent"
             android:layout_margin="@dimen/margin_default"
-            android:text='@{isLoading ? "" : @string/sign_in}'
+            android:text='@string/sign_in'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -86,7 +68,7 @@
             android:indeterminateTint="@color/colorBlack"
             android:indeterminateTintMode="src_in"
             android:translationZ="20dp"
-            android:visibility="@{isLoading ? View.VISIBLE : View.GONE }"
+            android:visibility="gone"
             app:backgroundTint="@color/colorBlack"
             app:layout_constraintBottom_toBottomOf="@+id/loginButton"
             app:layout_constraintEnd_toEndOf="@+id/loginButton"
