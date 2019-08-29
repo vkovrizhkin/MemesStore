@@ -18,8 +18,12 @@
     <string name="add_mem_title">Add Mem</string>
     <string name="profile_title">Profile</string>
 
-    <string name="days_ago1">%d дня назад</string>
-    <string name="days_ago2">%d дней назад</string>
+    <string name="days_ago2">%d дня назад</string>
+    <string name="days_ago3">%d дней назад</string>
+    <string name="days_ago1">%d день назад</string>
+
+    <string name="today">сегодня</string>
+    <string name="yesterday">вчера</string>
 
 
 </resources>
