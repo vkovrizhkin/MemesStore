@@ -88,20 +88,26 @@ class MemListFragment : Fragment(), ViewContract.IMemListView {
     }
 
     private fun startLoading() {
-
+        if (memesList.isEmpty()) {
+            if (activity is ViewContract.ITabNavigatorContainer) {
+                (activity as ViewContract.ITabNavigatorContainer).showLoading()
+            }
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
 
     private fun stopLoading() {
+        if (memesList.isEmpty()) {
+            if (activity is ViewContract.ITabNavigatorContainer) {
+                (activity as ViewContract.ITabNavigatorContainer).hideLoading()
+            }
+        }
         view!!.swipeToRefresh.isRefreshing = false
     }
 
     override fun showMemes(memes: List<MemInfo>) {
         stopLoading()
-
+        memesList = memes as MutableList<MemInfo>
         val diffCallback = MemesDiffUtil(mAdapter.memesList, memes)
         val memDiffResult = DiffUtil.calculateDiff(diffCallback)
         mAdapter.memesList = memes
