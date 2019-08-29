@@ -15,9 +15,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleTextColor="@color/colorTextMain" />
+            app:navigationIcon="@drawable/ic_close_accent_24dp"
+            app:titleTextColor="@color/colorTextMain"
+            />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView

@@ -12,10 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.screens.DetailMemActivity"></activity>
+        <activity
+            android:name=".view.screens.DetailMemActivity"
+            android:theme="@style/LightStatusBarTheme"></activity>
         <activity
             android:name=".view.screens.main.MainScreenActivity"
-            android:theme="@style/MainActivityTheme" />
+            android:theme="@style/LightStatusBarTheme" />
         <activity android:name=".view.screens.LoginActivity" />
         <activity
             android:name=".view.SplashActivity"

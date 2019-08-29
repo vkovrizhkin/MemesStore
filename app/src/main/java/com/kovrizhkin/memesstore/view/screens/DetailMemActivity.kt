@@ -18,7 +18,7 @@ class DetailMemActivity : AppCompatActivity() {
         val memInfo = intent.getSerializableExtra(MEM_EXTRA_KEY) as MemInfo
 
         showMemDetails(memInfo)
-
+        toolbar.setNavigationOnClickListener { finish() }
 
     }
 
