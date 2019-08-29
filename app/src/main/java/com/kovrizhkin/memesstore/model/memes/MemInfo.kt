@@ -7,20 +7,20 @@ import java.io.Serializable
 
 data class MemInfo(
     @SerializedName("createdDate")
-    val createdDate: Long,
+    override val createdDate: Long,
 
     @SerializedName("description")
-    val description: String,
+    override val description: String,
 
     @SerializedName("id")
-    val id: String,
+    override val id: String,
 
     @SerializedName("isFavorite")
-    val isFavorite: Boolean,
+    override val isFavorite: Boolean,
 
     @SerializedName("photoUtl")
-    val photoUtl: String,
+    override val photoUtl: String,
 
     @SerializedName("title")
-    val title: String
-) : Serializable
+    override val title: String
+) : Serializable, MemInterface
