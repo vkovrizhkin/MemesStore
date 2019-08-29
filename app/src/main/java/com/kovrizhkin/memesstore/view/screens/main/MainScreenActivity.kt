@@ -1,72 +1,75 @@
 package com.kovrizhkin.memesstore.view.screens.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.kovrizhkin.memesstore.R
-import com.kovrizhkin.memesstore.view.adapters.MainViewPagerFragmentAdapter
+import com.kovrizhkin.memesstore.view.ViewContract
+import com.kovrizhkin.memesstore.view.screens.main.fragments.AddMemFragment
+import com.kovrizhkin.memesstore.view.screens.main.fragments.MemListFragment
+import com.kovrizhkin.memesstore.view.screens.main.fragments.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main_screen.*
 
-class MainScreenActivity : AppCompatActivity() {
+class MainScreenActivity : AppCompatActivity(), ViewContract.ITabNavigatorContainer {
+
+    private var currentFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
+        showView(MEMES_LIST_FRAGMENT_INDEX)
+        initBottomBar()
 
-        viewPager.adapter = MainViewPagerFragmentAdapter(supportFragmentManager)
-
-        syncViewPagerWithBottomBar(viewPager, bottomNavigationView)
     }
 
-    private fun syncViewPagerWithBottomBar(viewPager: ViewPager, bottomBar: BottomNavigationView) {
+    override fun showLoading() {
+        loadingBanner.visibility = View.VISIBLE
+    }
 
-        bottomBar.setOnNavigationItemSelectedListener {
+    override fun hideLoading() {
+        loadingBanner.visibility = View.GONE
+    }
+
+    override fun showView(tabIndex: Int) {
+
+        currentFragment?.let {
+            supportFragmentManager.beginTransaction().hide(it)
+        }
+
+        val addedFragment = supportFragmentManager.findFragmentByTag(tabIndex.toString())
+        if (addedFragment != null) {
+            supportFragmentManager.beginTransaction().show(addedFragment)
+            currentFragment = addedFragment
+        } else {
+            val fragment = when (tabIndex) {
+                MEMES_LIST_FRAGMENT_INDEX -> MemListFragment()
+                ADD_MEM_FRAGMENT_INDEX -> AddMemFragment()
+                PROFILE_FRAGMENT_INDEX -> ProfileFragment()
+                else -> MemListFragment()
+            }
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, fragment, tabIndex.toString())
+                .commit()
+            currentFragment = addedFragment
+        }
+    }
+
+    private fun initBottomBar() {
+
+        bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.mem_list_tab -> viewPager.currentItem =
-                    MEMES_LIST_FRAGMENT_INDEX
-                R.id.add_mem_tab -> viewPager.currentItem =
-                    ADD_MEM_FRAGMENT_INDEX
-                R.id.profile_tab -> viewPager.currentItem =
-                    PROFILE_FRAGMENT_INDEX
+                R.id.mem_list_tab -> showView(MEMES_LIST_FRAGMENT_INDEX)
+
+                R.id.add_mem_tab -> showView(ADD_MEM_FRAGMENT_INDEX)
+
+                R.id.profile_tab -> showView(PROFILE_FRAGMENT_INDEX)
+
             }
             return@setOnNavigationItemSelectedListener true
         }
-
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {}
-
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
-
-            override fun onPageSelected(position: Int) {
-                when (position) {
-                    MEMES_LIST_FRAGMENT_INDEX -> {
-                        bottomBar.menu.getItem(MEMES_LIST_FRAGMENT_INDEX)
-                            .isChecked = true
-                        window.statusBarColor = resources.getColor(R.color.colorLightBackground)
-                    }
-
-                    ADD_MEM_FRAGMENT_INDEX -> {
-                        bottomBar.menu.getItem(ADD_MEM_FRAGMENT_INDEX)
-                            .isChecked = true
-                        window.statusBarColor = resources.getColor(R.color.colorLightBackground)
-                    }
-                    PROFILE_FRAGMENT_INDEX -> {
-                        bottomBar.menu.getItem(PROFILE_FRAGMENT_INDEX)
-                            .isChecked = true
-                        window.statusBarColor = resources.getColor(R.color.colorCanvas)
-                    }
-                }
-            }
-
-        })
-
     }
+
 
     companion object {
         const val MEMES_LIST_FRAGMENT_INDEX = 0

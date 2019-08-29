@@ -10,9 +10,11 @@
     <color name="colorTransparent">#00000000</color>
 
 
+
     <color name="colorCanvas">#23213f</color>
     <color name="colorLightBackground">#312f51</color>
     <color name="colorSemiTransparent">#0DFFFFFF</color>
+    <color name="colorBannerBackground">#7723213F</color>
 
     <color name="colorTextMain">#FFFFFF</color>
     <color name="colorTextButton">#23213F</color>

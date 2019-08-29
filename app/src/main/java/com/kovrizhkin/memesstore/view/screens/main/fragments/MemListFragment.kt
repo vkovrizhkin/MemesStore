@@ -91,6 +91,10 @@ class MemListFragment : Fragment(), ViewContract.IMemListView {
 
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
     private fun stopLoading() {
         view!!.swipeToRefresh.isRefreshing = false
     }
