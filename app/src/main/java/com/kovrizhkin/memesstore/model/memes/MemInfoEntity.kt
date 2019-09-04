@@ -11,7 +11,7 @@ data class MemInfoEntity(
 
     @ColumnInfo(name = "description") override val description: String,
 
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") override val id: String,
+    @PrimaryKey @ColumnInfo(name = "id") override val id: String,
 
     @ColumnInfo(name = "is_favorite") override val isFavorite: Boolean,
 
