@@ -7,14 +7,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.kovrizhkin.memesstore.R
 import com.kovrizhkin.memesstore.model.memes.MemInfo
-import com.kovrizhkin.memesstore.presenters.MemListPresenter
-import com.kovrizhkin.memesstore.presenters.PresenterContract
+import com.kovrizhkin.memesstore.presenters.MemesMoxyPresenter
 import com.kovrizhkin.memesstore.utils.MemesDiffUtil
 import com.kovrizhkin.memesstore.view.ViewContract
 import com.kovrizhkin.memesstore.view.adapters.MemRecViewAdapter
@@ -22,9 +22,10 @@ import com.kovrizhkin.memesstore.view.screens.DetailMemActivity
 import kotlinx.android.synthetic.main.fragment_mem_list.view.*
 
 
-class MemListFragment : Fragment(), ViewContract.IMemListView {
+class MemListFragment : MvpAppCompatFragment(), MemView {
 
-    private lateinit var presenter: PresenterContract.IMemListPresenter
+    @InjectPresenter
+    internal lateinit var presenter: MemesMoxyPresenter
 
     private lateinit var mAdapter: MemRecViewAdapter
 
@@ -41,7 +42,6 @@ class MemListFragment : Fragment(), ViewContract.IMemListView {
         initRecView(view.memRecView)
         view.swipeToRefresh.setOnRefreshListener { getFreshMemes() }
         view.swipeToRefresh.setProgressBackgroundColorSchemeColor(resources.getColor(R.color.colorAccent))
-        presenter = MemListPresenter(this)
         getFreshMemes()
         return view
     }
@@ -117,6 +117,5 @@ class MemListFragment : Fragment(), ViewContract.IMemListView {
     override fun showError(t: Throwable) {
         stopLoading()
     }
-
 
 }

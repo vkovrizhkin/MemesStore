@@ -1,5 +1,6 @@
 package com.kovrizhkin.memesstore.view
 
+import com.arellomobile.mvp.MvpView
 import com.kovrizhkin.memesstore.model.memes.MemInfo
 
 interface ViewContract {
@@ -15,7 +16,7 @@ interface ViewContract {
         fun onErrorLogin(t: Throwable)
     }
 
-    interface IMemListView {
+    interface IMemListView: MvpView {
         fun showMemes(memes: List<MemInfo>)
         fun showError(t: Throwable)
     }
